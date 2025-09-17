@@ -516,6 +516,30 @@ def validate_all_runs_have_blocks(rating):
         )
 
 
+def validate_all_runs_are_numeric(rating):
+    """
+    Validate each Run ID in each Piece in the CRW file does not have any 
+    alphabet characters.
+
+    When there are alphabet characters in the Run ID, operators are unable to log 
+    into that run in TM.
+    """
+
+    for piece in rating["crw"]:
+        if not isinstance(piece, parser.Piece):
+            continue
+
+        if all(not char.isalpha() for char in piece.run_id):
+            continue
+
+        yield ValidationError(
+            file_type="crw",
+            error="run_with_letters",
+            key=(piece.run_id, piece.service_key),
+            description="Run contains letters.",
+        )
+
+
 def validate_calendar_exceptions_have_unique_runs(rating):
     """
     Validate that each used exception combo has unique run IDs.
@@ -583,6 +607,7 @@ def validate_services_have_unique_blocks(rating):
 
 
 ALL_VALIDATORS = [
+    validate_all_runs_are_numeric,
     validate_all_blocks_have_trips,
     validate_all_blocks_have_runs,
     validate_all_revenue_trips_are_public,

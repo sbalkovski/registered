@@ -1,0 +1,2 @@
+key=('ha-0101', 'ST1'), error='run_with_letters'
+key=('ha-0106', 'DR1'), error='run_with_letters'

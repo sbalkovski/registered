@@ -7,7 +7,6 @@ VALID_TESTS_DIR = Path(__file__).parent / "support" / "validation" / "valid"
 INVALID_TESTS_DIR = Path(__file__).parent / "support" / "validation" / "invalid"
 GLOB = "[!.]*"
 
-
 def basename(path):
     return path.name
 
@@ -32,6 +31,7 @@ def test_invalid_ratings(path):
     errors = list(validate.validate_rating(rating.Rating(path, expect_all_files=False)))
     assert errors != [], f"expected to see validation errors in {path}"
     error_text = "\n".join(repr(e) for e in errors)
+    print(error_text)
     # ensure that we see the expected errors
     with open(path / "EXPECTED_ERRORS.txt") as expected:
         for line in expected:

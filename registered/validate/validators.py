@@ -5,6 +5,7 @@ Collection of validators for rating data.
 from collections import defaultdict
 import itertools
 import attr
+import re
 from registered import parser
 from registered.validate import helpers
 
@@ -516,27 +517,24 @@ def validate_all_runs_have_blocks(rating):
         )
 
 
-def validate_all_runs_are_numeric(rating):
+def validate_run_id_format(rating):
     """
-    Validate each Run ID in each Piece in the CRW file does not have any 
-    alphabet characters.
-
-    When there are alphabet characters in the Run ID, operators are unable to log 
-    into that run in TM.
+    Validate each Run ID in each Piece in the CRW file is in the format of 
+    digits-digits
     """
 
     for piece in rating["crw"]:
         if not isinstance(piece, parser.Piece):
             continue
 
-        if all(not char.isalpha() for char in piece.run_id):
+        if bool(re.fullmatch(r"\d+-\d+", piece.run_id)):
             continue
 
         yield ValidationError(
             file_type="crw",
-            error="run_with_letters",
+            error="run_id_invalid_format",
             key=(piece.run_id, piece.service_key),
-            description="Run contains letters.",
+            description="Run ID is in an invalid format.",
         )
 
 
@@ -607,7 +605,7 @@ def validate_services_have_unique_blocks(rating):
 
 
 ALL_VALIDATORS = [
-    validate_all_runs_are_numeric,
+    validate_run_id_format,
     validate_all_blocks_have_trips,
     validate_all_blocks_have_runs,
     validate_all_revenue_trips_are_public,

@@ -520,14 +520,14 @@ def validate_all_runs_have_blocks(rating):
 def validate_run_id_format(rating):
     """
     Validate each Run ID in each Piece in the CRW file is in the format of 
-    digits-digits
+    "3 digits" + "-" + "4 digits" ex 123-0001
     """
 
     for piece in rating["crw"]:
         if not isinstance(piece, parser.Piece):
             continue
 
-        if bool(re.fullmatch(r"\d+-\d+", piece.run_id)):
+        if bool(re.fullmatch(r"\d{3}-\d{4}", piece.run_id)):
             continue
 
         yield ValidationError(

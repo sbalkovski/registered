@@ -1,2 +1,5 @@
 key=('ha-0101', 'ST1'), error='run_id_invalid_format'
 key=('ha-0106', 'DR1'), error='run_id_invalid_format'
+key=('01-001', 'DR1'), error='run_id_invalid_format'
+key=('123-1', 'DR1'), error='run_id_invalid_format'
+key=('1-0011', 'DR1'), error='run_id_invalid_format'

@@ -3,9 +3,9 @@ Collection of validators for rating data.
 """
 
 from collections import defaultdict
+import re
 import itertools
 import attr
-import re
 from registered import parser
 from registered.validate import helpers
 
@@ -527,7 +527,7 @@ def validate_run_id_format(rating):
         if not isinstance(piece, parser.Piece):
             continue
 
-        if bool(re.fullmatch(r"\d{3}-\d{4}", piece.run_id)):
+        if re.fullmatch(r"\d{3}-\d{4}", piece.run_id):
             continue
 
         yield ValidationError(

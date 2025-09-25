@@ -3,6 +3,7 @@ Collection of validators for rating data.
 """
 
 from collections import defaultdict
+import re
 import itertools
 import attr
 from registered import parser
@@ -516,6 +517,27 @@ def validate_all_runs_have_blocks(rating):
         )
 
 
+def validate_run_id_format(rating):
+    """
+    Validate each Run ID in each Piece in the CRW file is in the format of 
+    "3 digits" + "-" + "4 digits" ex 123-0001
+    """
+
+    for piece in rating["crw"]:
+        if not isinstance(piece, parser.Piece):
+            continue
+
+        if re.fullmatch(r"\d{3}-\d{4}", piece.run_id):
+            continue
+
+        yield ValidationError(
+            file_type="crw",
+            error="run_id_invalid_format",
+            key=(piece.run_id, piece.service_key),
+            description="Run ID is in an invalid format.",
+        )
+
+
 def validate_calendar_exceptions_have_unique_runs(rating):
     """
     Validate that each used exception combo has unique run IDs.
@@ -583,6 +605,7 @@ def validate_services_have_unique_blocks(rating):
 
 
 ALL_VALIDATORS = [
+    validate_run_id_format,
     validate_all_blocks_have_trips,
     validate_all_blocks_have_runs,
     validate_all_revenue_trips_are_public,

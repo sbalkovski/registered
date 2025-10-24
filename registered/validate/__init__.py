@@ -21,7 +21,7 @@ def validate_rating(rating):
 
 def validate_path(path):
     """
-    Validate a gvien path.
+    Validate a given path.
 
     Returns 0 if the path is valid, 1 (and prints the errors) otherwise.
     """

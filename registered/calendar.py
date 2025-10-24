@@ -10,7 +10,8 @@ from registered.parser import CalendarDate
 
 def calculate_garage_bases(garages, services, day_types, day_type):
     """
-    Find the most commonly used service for all garages for a given day type (Weekday, Saturday, Sunday).
+    Find the most commonly used service for all garages for a given day type: 
+    (Weekday, Saturday, Sunday).
     """
     dates = {date for date in day_types if day_types[date] == day_type}
     garage_bases = {}
@@ -18,10 +19,10 @@ def calculate_garage_bases(garages, services, day_types, day_type):
     for garage in garages:
         base = max(
             services.values(),
-            key=lambda schedule: sum(
+            key=lambda schedule, g=garage: sum(
                 1
                 for date in dates
-                if services[(date, garage)] == schedule
+                if services[(date, g)] == schedule
             ),
         )
         garage_bases[garage] = base
@@ -52,7 +53,7 @@ def calendar(rating):
     for date in sorted(dates):
         date_str = date.strftime("%Y-%m-%d")
         garage_values = (
-            weekday_bases.get(garage, "") 
+            weekday_bases.get(garage, "")
             if services.get((date, garage), "") == "l31"
             else services.get((date, garage), "")
             for garage in garages

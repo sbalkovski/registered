@@ -183,7 +183,7 @@ def pull_prior_versions(tempdir):
     smbclient.shutil.copyfile(
         smb_path(
             TRANSITMASTER_DB,
-            "e$",
+            "d$",
             "FTP_ROOT",
             "Operational Data",
             "Route Data",
@@ -195,7 +195,7 @@ def pull_prior_versions(tempdir):
     )
     annun_path = smb_path(
         TRANSITMASTER_DB,
-        "e$",
+        "d$",
         "FTP_ROOT",
         "Operational Data",
         "Announcements",
@@ -214,7 +214,7 @@ def pull_prior_versions(tempdir):
     smbclient.shutil.copyfile(
         smb_path(
             TRANSITMASTER_DB,
-            "e$",
+            "d$",
             "FTP_ROOT",
             "Operational Data",
             "Announcements",
@@ -270,7 +270,7 @@ def push_directory(args, tempdir):
         for dirname in dirnames:
             dst = smb_path(
                 TRANSITMASTER,
-                "C$",
+                "D$",
                 "Ratings",
                 args.rating_folder,
                 short_path,
@@ -283,7 +283,7 @@ def push_directory(args, tempdir):
                 continue
             src = Path(dirpath) / filename
             dst = smb_path(
-                TRANSITMASTER, "C$", "Ratings", args.rating_folder, short_path, filename
+                TRANSITMASTER, "D$", "Ratings", args.rating_folder, short_path, filename
             )
             print(f"Pushing {dst}...")
             smbclient.shutil.copy(str(src), dst)

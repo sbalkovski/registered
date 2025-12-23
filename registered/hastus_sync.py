@@ -19,7 +19,7 @@ from registered import calendar, cheat_sheet, environ, merge, parser, seasons, v
 
 HASTUS = environ["HASTUS_FILE_SERVER"]
 TRANSITMASTER = environ["TRANSITMASTER_FILE_SERVER"]
-TRANSITMASTER_DB = environ["TRANSITMASTER_DATABASE_SERVER"]
+TRANSITMASTER_DB = environ["TRANSITMASTER_FTP_SERVER"]
 SLASH = "\\"
 
 

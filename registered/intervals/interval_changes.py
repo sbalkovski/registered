@@ -1,5 +1,5 @@
 """
-CLI tool to compare the stops between two ratings.
+CLI tool to identify unique intervals from stops. Takes stop_comparison output as input.
 """
 
 from collections import defaultdict

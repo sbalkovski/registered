@@ -4,7 +4,9 @@ from registered.intervals import interval_changes
 from registered.rating import Rating
 import argparse
 
-next_rating = Rating(r"D:\Ratings\Winter12142025\Combine")
+RATING_PATH = Path(__file__).parent / "support" / "rating" / "Combine"
+
+next_rating = Rating(RATING_PATH)
 
 def test_one_stop_multiple_routes():
     different_stop_locations = {'522'}

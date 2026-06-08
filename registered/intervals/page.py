@@ -1,4 +1,4 @@
-# DEPRACATED
+# DEPRECATED
 
 # """
 # Render shortest/fastest paths for intervals as HTML.

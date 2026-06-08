@@ -1,4 +1,4 @@
-# intervals.routing_helpers DEPRACATED
+# intervals.routing_helpers DEPRECATED
 
 # from itertools import product
 # from registered.intervals.routing_helpers import *

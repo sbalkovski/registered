@@ -1,1 +1,3 @@
-from registered.intervals import stop  # Make sure we can import this module
+# intervals.stop depracated
+
+# from registered.intervals import stop  # Make sure we can import this module

@@ -78,15 +78,15 @@ def test_multiple_stops_multiple_routes():
     assert intervals == expected_intervals
 
 def test_read_excel_valid():
-    excel = r"tests\support\interval_change\valid\valid_stop_comparison.xlsx"
+    excel = Path(__file__).parent / "support" / "interval_change" / "valid" / "valid_stop_comparison.xlsx"
     excel_df = interval_changes.process_stop_changes_excel(excel, 'Sheet1')
 
     assert "Needs interval change? " in excel_df.columns
     assert "stopID" in excel_df.columns
 
 def test_read_excel_missing_columns():
-    excel_1 = r"tests\support\interval_change\invalid\missing_needs_interval.xlsx"
-    excel_2 = r"tests\support\interval_change\invalid\missing_stop_id.xlsx"
+    excel_1 = Path(__file__).parent / "support" / "interval_change" / "invalid" / "missing_needs_interval.xlsx"
+    excel_2 = Path(__file__).parent / "support" / "interval_change" / "invalid" / "missing_stop_id.xlsx"
     with pytest.raises(RuntimeError):
         excel_1_df = interval_changes.process_stop_changes_excel(excel_1, 'Sheet1')
     with pytest.raises(RuntimeError):

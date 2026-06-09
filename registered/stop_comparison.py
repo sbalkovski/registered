@@ -31,7 +31,7 @@ def output(stops, stop_ids, by_stop, change_type):
         if stop_id in tm_stop_locations:
             (tm_lat, tm_lon) = tm_stop_locations[stop_id]
             (_, _, distance) = GEOD.inv(lon, lat, tm_lon, tm_lat)
-            distance = f"{int(distance)}m"
+            distance = f"{int(distance)}"
         else:
             distance = ""
         print(
@@ -56,7 +56,6 @@ def route_direction_by_stops(rating):
             by_stop[record.stop_id].add(last_key)
 
     return by_stop
-
 
 def main(args):
     """

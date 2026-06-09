@@ -31,7 +31,7 @@ def output(stops, stop_ids, by_stop, change_type):
         if stop_id in tm_stop_locations:
             (tm_lat, tm_lon) = tm_stop_locations[stop_id]
             (_, _, distance) = GEOD.inv(lon, lat, tm_lon, tm_lat)
-            distance = f"{int(distance)}"
+            distance = f"{int(distance)}m"
         else:
             distance = ""
         print(
@@ -63,7 +63,8 @@ def main(args):
     """
     current_rating = Rating(args.CURRENT)
     next_rating = Rating(args.NEXT)
-    by_stop = route_direction_by_stops(next_rating)
+    by_stop_next = route_direction_by_stops(next_rating)
+    by_stop_current = route_direction_by_stops(current_rating)
 
     current_rating_stops = {stop.stop_id: stop for stop in current_rating["nde"]}
     current_rating_stop_ids = set(current_rating_stops)
@@ -72,7 +73,10 @@ def main(args):
     next_rating_stop_ids = set(next_rating_stops)
 
     new_stop_ids = next_rating_stop_ids - current_rating_stop_ids
-    output(next_rating_stops, new_stop_ids, by_stop, "newStops")
+    output(next_rating_stops, new_stop_ids, by_stop_next, "newStop")
+
+    removed_stop_ids = current_rating_stop_ids - next_rating_stop_ids
+    output(current_rating_stops, removed_stop_ids, by_stop_current, "removedStop")
 
     shared_stop_ids = next_rating_stop_ids & current_rating_stop_ids
     same_names = {
@@ -96,14 +100,14 @@ def main(args):
     output(
         next_rating_stops,
         shared_stop_ids - same_names - same_locations,
-        by_stop,
+        by_stop_next,
         "newName_newLocation",
     )
     output(
-        next_rating_stops, same_names - same_locations, by_stop, "sameName_newLocation"
+        next_rating_stops, same_names - same_locations, by_stop_next, "sameName_newLocation"
     )
     output(
-        next_rating_stops, same_locations - same_names, by_stop, "newName_sameLocation"
+        next_rating_stops, same_locations - same_names, by_stop_next, "newName_sameLocation"
     )
 
 

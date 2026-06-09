@@ -1,4 +1,4 @@
-#intervals.missing DEPRACATED
+#intervals.missing DEPRECATED
 
 # from shapely.geometry import Point
 # from registered.intervals.interval import Stop, Interval

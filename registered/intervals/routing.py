@@ -1,4 +1,4 @@
-# DEPRACATED
+# DEPRECATED
 
 # """
 # Calculate shortest/fastest paths for missing intervals.

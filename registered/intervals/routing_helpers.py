@@ -1,4 +1,4 @@
-# DEPRACATED
+# DEPRECATED
 
 # """
 # Helper functions for the routing module.

@@ -1,4 +1,4 @@
-# intervals.calculation DEPRACATED
+# intervals.calculation DEPRECATED
 
 # from shapely.geometry import Point
 # from registered.intervals.routing import RestrictedGraph

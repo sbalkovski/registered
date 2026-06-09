@@ -57,7 +57,6 @@ def route_direction_by_stops(rating):
 
     return by_stop
 
-
 def main(args):
     """
     Entrypoint for the CLI tool.

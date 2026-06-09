@@ -1,4 +1,4 @@
-# DEPRACATED
+# DEPRECATED
 
 # """
 # Calculation of a fastest/shortest path for a given Interval.

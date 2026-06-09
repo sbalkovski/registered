@@ -1,4 +1,4 @@
-# DEPRACATED
+# DEPRECATED
 
 # """
 # Shared code for the `missing_intervals` and `stop_intervals` scripts.

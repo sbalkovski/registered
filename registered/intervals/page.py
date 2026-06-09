@@ -1,4 +1,4 @@
-# DEPRACATED
+# DEPRECATED
 
 # """
 # Render shortest/fastest paths for intervals as HTML.
@@ -257,11 +257,13 @@
 #         ox.utils.log("rendering page...")
 #         scripts = [
 #             "https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js",
-#             "https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js",
+#             "https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/
+#              2.0.2/leaflet.awesome-markers.js",
 #         ]
 #         stylesheets = [
 #             "https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css",
-#             "https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css",
+#             "https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/
+#              2.0.2/leaflet.awesome-markers.css",
 #             "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css",
 #             "https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css",
 #         ]

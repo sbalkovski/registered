@@ -58,6 +58,3 @@ def parse_elyse2(file, input_loc, output_loc = None,
         elyse2.to_csv(output_file, index = False, sep = '\t')
 
     return elyse2
-
-a = parse_elyse2("ELYSE2_8_17.pdf", input_loc='c:\\Users\\sbalkovski\\OneDrive - MBTA\\sbalkovski\\02 Active Projects\\fall 2026 rating\\announcements fall 2026', export = False)
-print(a)

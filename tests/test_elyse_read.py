@@ -6,9 +6,9 @@ from pathlib import Path
 import pandas as pd
 from registered import elyse_read
 
-TEST_PDF = Path(__file__) / "support" / 'elyse2_test.pdf'
+TEST_PATH = Path(__file__) / "support" 
 
-T = elyse_read.parse_elyse2(TEST_PDF, export = False)
+T = elyse_read.parse_elyse2('elyse2_test.pdf', input_loc = TEST_PATH, export = False)
 
 def test_columns_parsed():
     """

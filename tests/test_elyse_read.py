@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 from registered import elyse_read
 
-TEST_PATH = Path(__file__) / "support" 
+TEST_PATH = Path(__file__).parent / "support" 
 
 T = elyse_read.parse_elyse2('elyse2_test.pdf', input_loc = TEST_PATH, export = False)
 

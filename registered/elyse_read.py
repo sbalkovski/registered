@@ -17,7 +17,7 @@ def get_delims(text):
     return text_list
 
 
-def parse_elyse2(file, input_loc, output_loc,
+def parse_elyse2(file, input_loc, output_loc = None,
                  export = False, output_file_name ='elyse2_headsigns.txt'):
     # Reads in pdf
     """
@@ -47,7 +47,8 @@ def parse_elyse2(file, input_loc, output_loc,
     elyse2.columns = ['Signcode', 'Route', 'Headsign']
 
     # Combine route and front
-    elyse2['Headsign'] = (elyse2['Route'] + ' ').fillna('') + elyse2['Headsign'].fillna('')
+    elyse2['Headsign'] = ((elyse2['Route'] + ' ').fillna('') + elyse2['Headsign'].fillna(''))\
+        .str.replace(", ", " | ")
 
     elyse2 = elyse2[['Signcode', 'Headsign']]
     # Export
@@ -57,3 +58,6 @@ def parse_elyse2(file, input_loc, output_loc,
         elyse2.to_csv(output_file, index = False, sep = '\t')
 
     return elyse2
+
+a = parse_elyse2("ELYSE2_8_17.pdf", input_loc='c:\\Users\\sbalkovski\\OneDrive - MBTA\\sbalkovski\\02 Active Projects\\fall 2026 rating\\announcements fall 2026', export = False)
+print(a)
